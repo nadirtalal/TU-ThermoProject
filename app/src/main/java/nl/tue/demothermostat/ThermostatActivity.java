@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 public class ThermostatActivity extends Activity {
 
+    // aeu
     int vtemp = 21;
     TextView temp;
     SeekBar seekBar;
