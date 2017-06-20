@@ -20,7 +20,6 @@ public class TestingWS extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.testing_ws);
 
@@ -42,7 +41,6 @@ public class TestingWS extends Activity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -78,7 +76,6 @@ public class TestingWS extends Activity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new Thread(new Runnable() {
                     @Override
                     public void run() {

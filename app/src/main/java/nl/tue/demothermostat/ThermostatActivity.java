@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import org.thermostatapp.util.*;
 
 public class ThermostatActivity extends Activity {
 
@@ -23,6 +24,7 @@ public class ThermostatActivity extends Activity {
 
         ImageView bPlus = (ImageView)findViewById(R.id.bPlus);
         bPlus.setImageResource(R.drawable.up);
+
 
         // -- Button action
         ImageView bMinus = (ImageView)findViewById(R.id.bMinus);
@@ -59,23 +61,69 @@ public class ThermostatActivity extends Activity {
 
             }
         });
+
+        /*
+        new ContinuousLongClickListener(btnUp, new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                int currentValue = Integer.parseInt(String.valueOf(textView.getText()));
+                int newValue = currentValue + 10;
+                textView.setText(String.valueOf(newValue));
+                return false;
+            }
+        });
+        */
+
         //TODO implement the holding button to increase function
+        new ContinuousLongClickListener(bPlus, new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (vtemp < 300) {
+                    statusLed.setImageResource(R.drawable.green_status_led);
+                    vtemp = vtemp + 10;
+                    temp.setText(vtemp / 10 + "\u00B0C");
+                    seekBar.setProgress(vtemp - 50);
+                }
+                return false;
+            }
+        });
+
+
+
         bPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                statusLed.setImageResource(R.drawable.green_status_led);
-                vtemp++;
-                temp.setText(vtemp/10 + "\u00B0C");
-                seekBar.setProgress(vtemp-50);
+                if (vtemp < 300) {
+                    statusLed.setImageResource(R.drawable.green_status_led);
+                    vtemp++;
+                    temp.setText(vtemp / 10 + "\u00B0C");
+                    seekBar.setProgress(vtemp - 50);
+                }
             }
         });
+
+        new ContinuousLongClickListener(bMinus, new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (vtemp > 50) {
+                    statusLed.setImageResource(R.drawable.gray_status_led);
+                    vtemp = vtemp - 10;
+                    temp.setText(vtemp / 10 + "\u00B0C");
+                    seekBar.setProgress(vtemp - 50);
+                }
+                return false;
+            }
+        });
+
         bMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                statusLed.setImageResource(R.drawable.gray_status_led);
-                vtemp--;
-                temp.setText(vtemp/10 + "\u00B0C");
-                seekBar.setProgress(vtemp-50);
+                if (vtemp > 50) {
+                    statusLed.setImageResource(R.drawable.gray_status_led);
+                    vtemp--;
+                    temp.setText(vtemp / 10 + "\u00B0C");
+                    seekBar.setProgress(vtemp - 50);
+                }
             }
         });
     }
