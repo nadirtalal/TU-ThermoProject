@@ -53,11 +53,12 @@ public class ThermostatActivity extends Activity {
 
         // ACTION
         seekBar = (SeekBar)findViewById(R.id.seekBar);
-        seekBar.setProgress(vtemp);
+        seekBar.setProgress((vtemp-15));
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                temp.setText(i + " \u2103");
+                vtemp = i+15;
+                temp.setText((i+15) + " \u2103");
             }
 
             @Override
@@ -75,7 +76,7 @@ public class ThermostatActivity extends Activity {
             public void onClick(View view) {
                 vtemp++;
                 temp.setText(vtemp + " \u2103");
-                seekBar.setProgress(vtemp);
+                seekBar.setProgress((vtemp-15));
             }
         });
         bMinus.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +84,7 @@ public class ThermostatActivity extends Activity {
             public void onClick(View view) {
                 vtemp--;
                 temp.setText(vtemp + " \u2103");
-                seekBar.setProgress(vtemp);
+                seekBar.setProgress((vtemp-15));
             }
         });
     }

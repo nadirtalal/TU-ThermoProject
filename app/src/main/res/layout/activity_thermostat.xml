@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/seekBar"
         android:layout_gravity="center_horizontal"
-        android:max="30"
+        android:max="15"
         android:thumbTint="#336699"
         android:progressTint="#336699"
         android:indeterminate="false" />
