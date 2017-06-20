@@ -1,65 +1,78 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
+    android:layout_height="match_parent" android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:paddingTop="8dp"
     android:gravity="center_horizontal"
-    android:background="#000000"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".ThermostatActivity">
+    android:background="@drawable/wallpaper02"
+    android:paddingBottom="4dp" tools:context=".ThermostatActivity"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:baselineAligned="false">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Current Temperature"
-        android:textSize="30dp"
-        android:textColor="#ffffff"
-        android:id="@+id/textView2" />
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/statusLed"
+            android:paddingTop="1dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/green_status_led" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Current Temperature"
+            android:textSize="30dp"
+            android:textColor="#ffffff"
+
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/textView2" />
+    </GridLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/add_button"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/up"
         android:id="@+id/bPlus" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="21 &#x2103;"
-        android:textSize="30dp"
-        android:textColor="#ffffff"
+        android:text="21.1&#x00B0;C"
+        android:textSize="85dp"
+        android:textColor="#afafaf"
         android:id="@+id/temp" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/minus_button"
-        android:id="@+id/bMinus" />
+        android:id="@+id/bMinus"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/down" />
 
     <SeekBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/seekBar"
         android:layout_gravity="center_horizontal"
-        android:max="15"
+        android:max="250"
         android:thumbTint="#336699"
         android:progressTint="#336699"
         android:indeterminate="false" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Week Overview"
-        android:id="@+id/week_overview"
-        android:layout_gravity="center_horizontal" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Testing Web Service"
-        android:id="@+id/testing_ws"
+
+    <ImageView
+        android:id="@+id/bCalendar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/calendar"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
