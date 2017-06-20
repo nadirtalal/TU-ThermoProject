@@ -74,7 +74,7 @@ public class ThermostatActivity extends Activity {
         });
         */
 
-        //TODO implement the holding button to increase function
+
         new ContinuousLongClickListener(bPlus, new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
