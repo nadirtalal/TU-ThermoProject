@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="4dp"
     android:paddingRight="4dp"
-    android:paddingTop="8dp"
+    android:paddingTop="0dp"
     android:gravity="center_horizontal"
     android:background="@drawable/wallpaper02"
     android:paddingBottom="4dp" tools:context=".ThermostatActivity"
@@ -11,29 +11,60 @@
     android:baselineAligned="false">
 
     <GridLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
 
         <ImageView
             android:id="@+id/statusLed"
-            android:paddingTop="1dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
+
             android:src="@drawable/green_status_led" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Current Temperature"
-            android:textSize="30dp"
-            android:textColor="#ffffff"
-
+            android:text="Home"
+            android:textSize="48dp"
+            android:textColor="#afafaf"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/textView2" />
+            android:id="@+id/textView2"
+            android:paddingTop="0px"
+            android:paddingLeft="110px"
+            android:paddingRight="110px"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="2px"
+            android:textSize="40dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="server time:"
+            android:textColor="#afafaf" />
+
+            <TextView
+                android:id="@+id/serverTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="04:50"
+                android:textSize="30sp"
+                android:textColor="#afafaf" />
+        </LinearLayout>
+
     </GridLayout>
+
+
+
+
 
     <ImageView
         android:layout_width="120dp"
@@ -65,8 +96,6 @@
         android:thumbTint="#336699"
         android:progressTint="#336699"
         android:indeterminate="false" />
-
-
 
     <ImageView
         android:id="@+id/bCalendar"
