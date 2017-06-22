@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -16,8 +15,9 @@ public class ThermostatActivity extends Activity {
 
     int vtemp = 211;
 
-    CountDownTimer serverUpdateTimer;
-    String getParam;
+    CountDownTimer serverUpdateTimer, serverUpdateTemperatures;
+    String getParam, currentTempString, targetTempString;
+    Double currentTemp, targetTemp;
     TextView temp, serverTime;
     SeekBar seekBar;
     ImageView statusLed;
@@ -37,7 +37,63 @@ public class ThermostatActivity extends Activity {
 
 
         //intialize a count down timer to make the updating of the servertime loop every 300 millisec
-        serverUpdateTimer = new CountDownTimer(5000, 300) {
+        serverUpdateTemperatures = new CountDownTimer(10000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                //create a new thread to keep polling the server time
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        currentTempString = "";
+                        targetTempString = "";
+                        try {
+                            targetTemp = (((double)vtemp)/10.00);
+                            targetTempString = String.valueOf(targetTemp);
+                            HeatingSystem.put("targetTemperature", targetTempString);
+                            currentTempString = HeatingSystem.get("currentTemperature");
+
+                            currentTemp = Double.parseDouble(currentTempString);
+                            /*
+									HeatingSystem.get("day");
+									HeatingSystem.get("time");
+									HeatingSystem.get("currentTemperature");
+									HeatingSystem.get("targetTemperature");
+									HeatingSystem.get("dayTemperature");
+									HeatingSystem.get("nightTemperature");
+									HeatingSystem.get("weekProgramState");
+							*/
+
+                            if(targetTemp>currentTemp){
+                                statusLed.setImageResource(R.drawable.green_status_led);
+                            }else{
+                                statusLed.setImageResource(R.drawable.gray_status_led);
+                            }
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata "+e);
+                        }
+                    }
+                }).start();
+            }
+
+            @Override
+            public void onFinish() {
+                try{
+                    loopUpdateTemp();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        //start the temp update timer
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                serverUpdateTemperatures.start();
+            }
+        }).start();
+
+        serverUpdateTimer = new CountDownTimer(10000, 300) {
             @Override
             public void onTick(long millisUntilFinished) {
                 //create a new thread to keep polling the server time
@@ -77,20 +133,20 @@ public class ThermostatActivity extends Activity {
             @Override
             public void onFinish() {
                 try{
-                    loopUpdate();
+                    loopUpdateTime();
                 }catch(Exception e){
                     e.printStackTrace();
                 }
             }
         };
 
+        //start the time update timer
         new Thread(new Runnable() {
             @Override
             public void run() {
                 serverUpdateTimer.start();
             }
         }).start();
-
 
         //textview for the temp in a custom font
         temp = (TextView)findViewById(R.id.temp);
@@ -136,7 +192,7 @@ public class ThermostatActivity extends Activity {
             @Override
             public boolean onLongClick(View v) {
                 if (vtemp < 300) {
-                    statusLed.setImageResource(R.drawable.green_status_led);
+                    //statusLed.setImageResource(R.drawable.green_status_led);
                     vtemp = vtemp + 10;
                     temp.setText(vtemp / 10 + "\u00B0C");
                     seekBar.setProgress(vtemp - 50);
@@ -149,7 +205,7 @@ public class ThermostatActivity extends Activity {
             @Override
             public void onClick(View view) {
                 if (vtemp < 300) {
-                    statusLed.setImageResource(R.drawable.green_status_led);
+                    //statusLed.setImageResource(R.drawable.green_status_led);
                     vtemp++;
                     temp.setText(vtemp / 10 + "\u00B0C");
                     seekBar.setProgress(vtemp - 50);
@@ -161,7 +217,7 @@ public class ThermostatActivity extends Activity {
             @Override
             public boolean onLongClick(View v) {
                 if (vtemp > 50) {
-                    statusLed.setImageResource(R.drawable.gray_status_led);
+                    //statusLed.setImageResource(R.drawable.gray_status_led);
                     vtemp = vtemp - 10;
                     temp.setText(vtemp / 10 + "\u00B0C");
                     seekBar.setProgress(vtemp - 50);
@@ -174,7 +230,7 @@ public class ThermostatActivity extends Activity {
             @Override
             public void onClick(View view) {
                 if (vtemp > 50) {
-                    statusLed.setImageResource(R.drawable.gray_status_led);
+                    //statusLed.setImageResource(R.drawable.gray_status_led);
                     vtemp--;
                     temp.setText(vtemp / 10 + "\u00B0C");
                     seekBar.setProgress(vtemp - 50);
@@ -183,7 +239,12 @@ public class ThermostatActivity extends Activity {
         });
     }
 
-    public void loopUpdate(){
+    public void loopUpdateTime(){
         serverUpdateTimer.start();
     }
+
+    public void loopUpdateTemp(){
+        serverUpdateTemperatures.start();
+    }
+
 }
