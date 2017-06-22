@@ -25,6 +25,8 @@ import android.util.Xml;
 
 public class HeatingSystem {
 
+    static public WeekProgram program;
+
     public static String BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/001";
     public static String WEEK_PROGRAM_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/001/weekProgram";
     private final static int TIME_OUT = 10000; // in milliseconds.
@@ -51,7 +53,7 @@ public class HeatingSystem {
             parser.nextTag();
             parser.require(XmlPullParser.START_TAG, null, "week_program");
 
-            WeekProgram program = new WeekProgram();
+            program = new WeekProgram();
             ArrayList<Switch> switches = new ArrayList<Switch>();
             String current_day = "";
 
@@ -94,7 +96,7 @@ public class HeatingSystem {
                 }
             }
         }
-        return null;
+        return program;
     }
 
     /**

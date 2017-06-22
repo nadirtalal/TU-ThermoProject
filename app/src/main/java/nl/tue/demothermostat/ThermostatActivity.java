@@ -1,6 +1,8 @@
 package nl.tue.demothermostat;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
 import org.thermostatapp.util.*;
 
 public class ThermostatActivity extends Activity {
@@ -21,6 +24,8 @@ public class ThermostatActivity extends Activity {
     TextView temp, serverTime;
     SeekBar seekBar;
     ImageView statusLed;
+    Boolean vacationMode;
+    ImageView bPlane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +33,12 @@ public class ThermostatActivity extends Activity {
 
         setContentView(R.layout.activity_thermostat);
 
-        ImageView bPlus = (ImageView)findViewById(R.id.bPlus);
+        ImageView bPlus = (ImageView) findViewById(R.id.bPlus);
         bPlus.setImageResource(R.drawable.up);
-        ImageView bMinus = (ImageView)findViewById(R.id.bMinus);
-        ImageView bCalendar = (ImageView)findViewById(R.id.bCalendar);
-        statusLed = (ImageView)findViewById(R.id.statusLed);
-
-
+        ImageView bMinus = (ImageView) findViewById(R.id.bMinus);
+        ImageView bCalendar = (ImageView) findViewById(R.id.bCalendar);
+        statusLed = (ImageView) findViewById(R.id.statusLed);
+        bPlane = (ImageView) findViewById(R.id.bPlane);
 
 
         //intialize a count down timer to make the updating of the servertime loop every 300 millisec
@@ -48,14 +52,14 @@ public class ThermostatActivity extends Activity {
                         currentTempString = "";
                         targetTempString = "";
                         try {
-                            targetTemp = (((double)vtemp)/10.00);
+                            targetTemp = (((double) vtemp) / 10.00);
                             targetTempString = String.valueOf(targetTemp);
                             HeatingSystem.put("targetTemperature", targetTempString);
                             currentTempString = HeatingSystem.get("currentTemperature");
 
                             currentTemp = Double.parseDouble(currentTempString);
                             /*
-									HeatingSystem.get("day");
+                                    HeatingSystem.get("day");
 									HeatingSystem.get("time");
 									HeatingSystem.get("currentTemperature");
 									HeatingSystem.get("targetTemperature");
@@ -64,13 +68,13 @@ public class ThermostatActivity extends Activity {
 									HeatingSystem.get("weekProgramState");
 							*/
 
-                            if(targetTemp>currentTemp){
+                            if (targetTemp > currentTemp) {
                                 statusLed.setImageResource(R.drawable.green_status_led);
-                            }else{
+                            } else {
                                 statusLed.setImageResource(R.drawable.gray_status_led);
                             }
                         } catch (Exception e) {
-                            System.err.println("Error from getdata "+e);
+                            System.err.println("Error from getdata " + e);
                         }
                     }
                 }).start();
@@ -78,9 +82,9 @@ public class ThermostatActivity extends Activity {
 
             @Override
             public void onFinish() {
-                try{
+                try {
                     loopUpdateTemp();
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -105,7 +109,7 @@ public class ThermostatActivity extends Activity {
                         try {
                             getParam = HeatingSystem.get("time");
                             /*
-									HeatingSystem.get("day");
+                                    HeatingSystem.get("day");
 									HeatingSystem.get("time");
 									HeatingSystem.get("currentTemperature");
 									HeatingSystem.get("targetTemperature");
@@ -116,16 +120,16 @@ public class ThermostatActivity extends Activity {
                             serverTime.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if(getParam != null) {
+                                    if (getParam != null) {
                                         serverTime.setText(getParam);
-                                    }else{
+                                    } else {
                                         serverTime.setText("slow boy");
                                     }
                                 }
                             });
 
                         } catch (Exception e) {
-                            System.err.println("Error from getdata "+e);
+                            System.err.println("Error from getdata " + e);
                         }
                     }
                 }).start();
@@ -133,13 +137,41 @@ public class ThermostatActivity extends Activity {
 
             @Override
             public void onFinish() {
-                try{
+                try {
                     loopUpdateTime();
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         };
+
+        //get vacation mode state
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    vacationMode = HeatingSystem.getVacationMode();
+
+                            /*
+                                    HeatingSystem.get("day");
+									HeatingSystem.get("time");
+									HeatingSystem.get("currentTemperature");
+									HeatingSystem.get("targetTemperature");
+									HeatingSystem.get("dayTemperature");
+									HeatingSystem.get("nightTemperature");
+									HeatingSystem.get("weekProgramState");
+							*/
+
+                    if (vacationMode) {
+                        bPlane.setImageResource(R.drawable.plane_green);
+                    } else {
+                        bPlane.setImageResource(R.drawable.plane);
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error from getdata " + e);
+                }
+            }
+        }).start();
 
         //start the time update timer
         new Thread(new Runnable() {
@@ -150,22 +182,22 @@ public class ThermostatActivity extends Activity {
         }).start();
 
         //textview for the temp in a custom font
-        temp = (TextView)findViewById(R.id.temp);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/coolFont.ttf");
+        temp = (TextView) findViewById(R.id.temp);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/coolFont.ttf");
         temp.setTypeface(custom_font);
 
         //textview for server time
-        serverTime = (TextView)findViewById(R.id.serverTime);
+        serverTime = (TextView) findViewById(R.id.serverTime);
 
 
         //creation of the seekbar
-        seekBar = (SeekBar)findViewById(R.id.seekBar);
+        seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setProgress(161);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                vtemp = (i+50);
-                temp.setText(vtemp/10.0f + "\u00B0C");
+                vtemp = (i + 50);
+                temp.setText(vtemp / 10.0f + "\u00B0C");
             }
 
             @Override
@@ -238,13 +270,67 @@ public class ThermostatActivity extends Activity {
                 }
             }
         });
+
+        //TODO get the plane button for changing in and out of vacation mode working
+        //N.B. the confirmOn and off are for the change logic
+        bPlane.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (vacationMode) {
+                    confirmOff();
+                } else {
+                    confirmOn();
+                }
+            }
+        });
     }
 
-    public void loopUpdateTime(){
+    public void confirmOn() {
+        new AlertDialog.Builder(this)
+                .setTitle("Vacation mode")
+                .setMessage("Are you sure you want to switch vacation mode On?")
+                .setNegativeButton("No", null)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            HeatingSystem.put("weekProgramState", "off");
+                            bPlane.setImageResource(R.drawable.plane_green);
+                        } catch (InvalidInputValueException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).create().show();
+    }
+
+    public void confirmOff() {
+        new AlertDialog.Builder(this)
+                .setTitle("Vacation mode")
+                .setMessage("Are you sure you want to switch vacation mode Off?")
+                .setNegativeButton("No", null)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    HeatingSystem.put("weekProgramState", "on");
+                                    bPlane.setImageResource(R.drawable.plane);
+                                } catch (InvalidInputValueException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
+                    }
+                }).create().show();
+    }
+
+    public void loopUpdateTime() {
         serverUpdateTimer.start();
     }
 
-    public void loopUpdateTemp(){
+    public void loopUpdateTemp() {
         serverUpdateTemperatures.start();
     }
 

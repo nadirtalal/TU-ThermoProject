@@ -17,48 +17,45 @@
             android:id="@+id/bMonday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
-            android:text="M"
+            android:text="Monday"
             android:layout_weight="0.144" />
         <Button
             android:id="@+id/bTuesday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
-            android:text="T"
-            android:layout_weight="0.143" />
+            android:text="Tuesday"
+            android:layout_weight="0.144" />
         <Button
             android:id="@+id/bWednesday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
-            android:text="W"
-            android:layout_weight="0.143" />
+            android:text="Wednesday"
+            android:layout_weight="0.144" />
         <Button
             android:id="@+id/bThursday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
-            android:text="Th"
-            android:layout_weight="0.143" />
+            android:text="Thursday"
+            android:layout_weight="0.144" />
         <Button
             android:id="@+id/bFriday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
-            android:text="F"
+            android:text="Friday"
             android:layout_weight="0.144" />
         <Button
             android:id="@+id/bSaturday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
-            android:text="Sa"
-            android:layout_weight="0.141" />
+            android:text="Saturday"
+            android:layout_weight="0.144" />
         <Button
             android:id="@+id/bSunday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
-            android:text="Su"
-            android:layout_weight="0.141" />
+            android:text="Sunday"
+            android:layout_weight="0.144" />
     </LinearLayout>
 
-    <GridView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+
 </LinearLayout>

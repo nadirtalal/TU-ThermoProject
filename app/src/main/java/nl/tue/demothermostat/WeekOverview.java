@@ -13,7 +13,7 @@ import org.thermostatapp.util.*;
  * Created by nstash on 06/05/15.
  */
 
-
+//TODO there a stability issues when going into a day view. I have no idea what the problem is nor how this can be fixed
 public class WeekOverview extends Activity {
 
     Button bMonday;

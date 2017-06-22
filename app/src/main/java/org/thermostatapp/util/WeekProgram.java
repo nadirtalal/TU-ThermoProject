@@ -43,11 +43,11 @@ public class WeekProgram {
             this.data.get(day).add(new Switch("day", false, "00:00"));
             this.data.get(day).add(new Switch("day", false, "00:00"));
             this.data.get(day).add(new Switch("day", false, "00:00"));
-        }
+}
 		/* Create the default switches settings*/
 
-        set_durations();
-    }
+    set_durations();
+}
 
     public String toXML() throws NullPointerException {
         StringBuilder build = new StringBuilder();
