@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import org.thermostatapp.util.*;
 
+import java.io.PrintStream;
+
 public class TestingWS extends Activity {
 
     Button getdata, putdata;
@@ -114,6 +116,7 @@ public class TestingWS extends Activity {
                                 }
                             });
                         } catch (Exception e) {
+
                             System.err.println("Error from getdata " + e);
                         }
                     }

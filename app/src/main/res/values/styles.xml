@@ -21,4 +21,25 @@
         <item name="android:layout_width">fill_parent</item>
     </style>
 
+    <style name="switchText" >
+        <item name="android:textColor">#afafaf</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+
+    <style name="startTime" >
+        <item name="android:width">65dp</item>
+        <item name="android:textColor">#afafaf</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:text">00:00</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Theme.App.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">#afafaf</item>
+        <item name="colorControlActivated">#c5c5c5</item>
+        <item name="colorControlHighlight">#c5c5c5</item>
+    </style>
+
 </resources>

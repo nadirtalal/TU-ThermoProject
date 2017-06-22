@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/wallpaper02"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/deleteButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_delete" />
+
+        <TextView
+            android:id="@+id/textViewSwitch1"
+            style="@style/switchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start:" />
+
+        <EditText
+            android:id="@+id/startTime1"
+            style="@style/startTime"
+            android:theme="@style/Theme.App.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:inputType="time" />
+
+        <TextView
+            android:id="@+id/textViewSwitchOff1"
+            style="@style/switchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="End:" />
+
+        <EditText
+            android:id="@+id/endTime1"
+            style="@style/startTime"
+            android:theme="@style/Theme.App.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:inputType="time" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageButton
+            android:id="@+id/deleteButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_delete" />
+
+        <TextView
+            android:id="@+id/textViewSwitch2"
+            style="@style/switchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start:" />
+
+        <EditText
+            android:id="@+id/startTime2"
+            style="@style/startTime"
+            android:theme="@style/Theme.App.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:inputType="time" />
+
+        <TextView
+            android:id="@+id/textViewSwitchOff2"
+            style="@style/switchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="End:" />
+
+        <EditText
+            android:id="@+id/endTime2"
+            style="@style/startTime"
+            android:theme="@style/Theme.App.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:inputType="time" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageButton
+            android:id="@+id/deleteButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_delete" />
+
+        <TextView
+            android:id="@+id/textViewSwitch3"
+            style="@style/switchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start:" />
+
+        <EditText
+            android:id="@+id/startTime3"
+            style="@style/startTime"
+            android:theme="@style/Theme.App.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:inputType="time" />
+
+        <TextView
+            android:id="@+id/textViewSwitchOff3"
+            style="@style/switchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="End:" />
+
+        <EditText
+            android:id="@+id/endTime3"
+            style="@style/startTime"
+            android:theme="@style/Theme.App.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:inputType="time" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageButton
+            android:id="@+id/deleteButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_delete" />
+
+        <TextView
+            android:id="@+id/textViewSwitch4"
+            style="@style/switchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start:" />
+
+        <EditText
+            android:id="@+id/startTime4"
+            style="@style/startTime"
+            android:theme="@style/Theme.App.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:inputType="time" />
+
+        <TextView
+            android:id="@+id/textViewSwitchOff4"
+            style="@style/switchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="End:" />
+
+        <EditText
+            android:id="@+id/endTime4"
+            style="@style/startTime"
+            android:theme="@style/Theme.App.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:inputType="time" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageButton
+            android:id="@+id/deleteButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_delete" />
+
+        <TextView
+            android:id="@+id/textViewSwitch5"
+            style="@style/switchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start:" />
+
+        <EditText
+            android:id="@+id/startTime5"
+            style="@style/startTime"
+            android:theme="@style/Theme.App.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:inputType="time" />
+
+        <TextView
+            android:id="@+id/textViewSwitchOff5"
+            style="@style/switchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="End:" />
+
+        <EditText
+            android:id="@+id/endTime5"
+            style="@style/startTime"
+            android:theme="@style/Theme.App.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:inputType="time" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:id="@+id/deleteButtonAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@android:drawable/ic_delete" />
+
+            <TextView
+                android:id="@+id/textViewSwitchAll"
+                style="@style/switchText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/deleteButtonAll"
+                android:text="Clear all" />
+
+            <TextView
+                android:id="@+id/textViewSwitchApply"
+                style="@style/switchText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/imageButtonApply"
+                android:text="Apply changes" />
+
+            <ImageButton
+                android:id="@+id/imageButtonApply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                android:layout_centerVertical="true"
+                android:src="@android:drawable/ic_input_add" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -21,6 +21,7 @@ public class ThermostatActivity extends Activity {
     TextView temp, serverTime;
     SeekBar seekBar;
     ImageView statusLed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

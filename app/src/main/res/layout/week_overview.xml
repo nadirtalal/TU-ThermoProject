@@ -3,61 +3,62 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_marginLeft="0px"
     android:layout_marginRight="0px"
-    android:background="#000000"
+    android:background="@drawable/wallpaper02"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:id="@+id/week_overview">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <Button
+            android:id="@+id/bMonday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
             android:text="M"
             android:layout_weight="0.144" />
-
         <Button
+            android:id="@+id/bTuesday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
             android:text="T"
             android:layout_weight="0.143" />
         <Button
+            android:id="@+id/bWednesday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
             android:text="W"
             android:layout_weight="0.143" />
-
-
         <Button
+            android:id="@+id/bThursday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
             android:text="Th"
             android:layout_weight="0.143" />
-
         <Button
+            android:id="@+id/bFriday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
             android:text="F"
             android:layout_weight="0.144" />
         <Button
+            android:id="@+id/bSaturday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
             android:text="Sa"
             android:layout_weight="0.141" />
         <Button
+            android:id="@+id/bSunday"
             style="@style/dayButton"
             android:layout_height="wrap_content"
             android:text="Su"
             android:layout_weight="0.141" />
-
     </LinearLayout>
 
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         />
-
-
 </LinearLayout>
