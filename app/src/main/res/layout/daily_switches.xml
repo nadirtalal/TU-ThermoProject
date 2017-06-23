@@ -315,12 +315,12 @@
 
         <EditText
             android:id="@+id/nightTemp"
-            android:width="65dp"
-            android:theme="@style/Theme.App.Base"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:inputType="numberDecimal" />
+            android:width="65dp"
+            android:inputType="numberDecimal"
+            android:theme="@style/Theme.App.Base" />
     </LinearLayout>
 
 </LinearLayout>
