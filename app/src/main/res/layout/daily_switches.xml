@@ -26,7 +26,7 @@
             style="@style/switchText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start:" />
+            android:text="Start" />
 
         <EditText
             android:id="@+id/startTime1"
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="End:" />
+            android:text="End" />
 
         <EditText
             android:id="@+id/endTime1"
@@ -71,7 +71,7 @@
             style="@style/switchText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start:" />
+            android:text="Start" />
 
         <EditText
             android:id="@+id/startTime2"
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="End:" />
+            android:text="End" />
 
         <EditText
             android:id="@+id/endTime2"
@@ -115,7 +115,7 @@
             style="@style/switchText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start:" />
+            android:text="Start" />
 
         <EditText
             android:id="@+id/startTime3"
@@ -132,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="End:" />
+            android:text="End" />
 
         <EditText
             android:id="@+id/endTime3"
@@ -159,7 +159,7 @@
             style="@style/switchText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start:" />
+            android:text="Start" />
 
         <EditText
             android:id="@+id/startTime4"
@@ -176,7 +176,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="End:" />
+            android:text="End" />
 
         <EditText
             android:id="@+id/endTime4"
@@ -203,7 +203,7 @@
             style="@style/switchText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start:" />
+            android:text="Start" />
 
         <EditText
             android:id="@+id/startTime5"
@@ -220,7 +220,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="End:" />
+            android:text="End" />
 
         <EditText
             android:id="@+id/endTime5"
@@ -292,14 +292,15 @@
         <TextView
             android:id="@+id/day"
             style="@style/switchText"
-            android:layout_width="50dp"
+            android:layout_width="52dp"
             android:layout_height="wrap_content"
-            android:text="day temp:" />
+            android:text="day temp" />
 
         <EditText
             android:id="@+id/dayTemp"
             android:width="65dp"
             android:theme="@style/Theme.App.Base"
+            android:textColor="#afafaf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -311,10 +312,11 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="night temp:" />
+            android:text="night temp" />
 
         <EditText
             android:id="@+id/nightTemp"
+            android:textColor="#afafaf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

@@ -304,9 +304,9 @@ public class ThermostatActivity extends Activity {
                                     // view can be only modify in the main thread or ui Thread
                                     runOnUiThread(new Runnable() {
                                         @Override
-                                    public void run() {
-                                    bPlane.setImageResource(R.drawable.plane_green);
-                                    }
+                                        public void run() {
+                                            bPlane.setImageResource(R.drawable.plane_green);
+                                        }
                                     });
                                 } catch (InvalidInputValueException e) {
                                     e.printStackTrace();
@@ -334,8 +334,9 @@ public class ThermostatActivity extends Activity {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                    bPlane.setImageResource(R.drawable.plane);
-                                        }});
+                                            bPlane.setImageResource(R.drawable.plane);
+                                        }
+                                    });
                                 } catch (InvalidInputValueException e) {
                                     e.printStackTrace();
                                 }
