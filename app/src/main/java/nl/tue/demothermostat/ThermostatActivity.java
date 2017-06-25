@@ -293,12 +293,23 @@ public class ThermostatActivity extends Activity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        try {
-                            HeatingSystem.put("weekProgramState", "off");
-                            bPlane.setImageResource(R.drawable.plane_green);
-                        } catch (InvalidInputValueException e) {
-                            e.printStackTrace();
-                        }
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    HeatingSystem.put("weekProgramState", "off");
+                                    // view can be only modify in the main thread or ui Thread
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                    public void run() {
+                                    bPlane.setImageResource(R.drawable.plane_green);
+                                    }
+                                    });
+                                } catch (InvalidInputValueException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
                     }
                 }).create().show();
     }
@@ -316,7 +327,12 @@ public class ThermostatActivity extends Activity {
                             public void run() {
                                 try {
                                     HeatingSystem.put("weekProgramState", "on");
+                                    // view can be only modify in the main thread or ui Thread
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
                                     bPlane.setImageResource(R.drawable.plane);
+                                        }});
                                 } catch (InvalidInputValueException e) {
                                     e.printStackTrace();
                                 }

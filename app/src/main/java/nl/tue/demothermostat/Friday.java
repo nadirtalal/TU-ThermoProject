@@ -88,7 +88,7 @@ public class Friday extends Activity {
             }
         });
 
-
+        // Linking buttons
         deleteButton1 = (ImageButton) findViewById(R.id.deleteButton1);
         deleteButton2 = (ImageButton) findViewById(R.id.deleteButton2);
         deleteButton3 = (ImageButton) findViewById(R.id.deleteButton3);
@@ -97,6 +97,7 @@ public class Friday extends Activity {
         deleteButtonAll = (ImageButton) findViewById(R.id.deleteButtonAll);
         imageButtonApply = (ImageButton) findViewById(R.id.imageButtonApply);
 
+        // Reset time to default
         deleteButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +137,7 @@ public class Friday extends Activity {
                 endTime5.setText(midnight);
             }
         });
-
+        // Todo - redundant code - Need to be refactored
         deleteButtonAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -211,7 +212,7 @@ public class Friday extends Activity {
                     int dayN = 0;
                     int nightN = 0;
                     Switch[] days = new Switch[5];
-                    ;
+                    ; //WHAT ON EARTH IS THIS
                     Switch[] nights = new Switch[5];
 
                     for (int i = 0; i < 10; i++) {
