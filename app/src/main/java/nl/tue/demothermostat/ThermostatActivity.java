@@ -24,7 +24,7 @@ public class ThermostatActivity extends Activity {
     TextView temp, serverTime;
     SeekBar seekBar;
     ImageView statusLed;
-    Boolean vacationMode;
+    boolean vacationMode;
     ImageView bPlane;
 
     @Override
@@ -275,9 +275,11 @@ public class ThermostatActivity extends Activity {
         //N.B. the confirmOn and off are for the change logic
         bPlane.setOnClickListener(new View.OnClickListener() {
             @Override
+            // If ve
             public void onClick(View view) {
                 if (vacationMode) {
                     confirmOff();
+                    vacationMode = false;
                 } else {
                     confirmOn();
                 }
