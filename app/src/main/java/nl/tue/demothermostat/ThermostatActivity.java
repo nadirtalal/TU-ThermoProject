@@ -24,7 +24,7 @@ public class ThermostatActivity extends Activity {
     TextView temp, serverTime;
     SeekBar seekBar;
     ImageView statusLed;
-    boolean vacationMode;
+    boolean vacationMode; // false
     ImageView bPlane;
 
     @Override
@@ -282,6 +282,7 @@ public class ThermostatActivity extends Activity {
                     vacationMode = false;
                 } else {
                     confirmOn();
+                    vacationMode = true;
                 }
             }
         });
