@@ -19,6 +19,8 @@ import org.thermostatapp.util.*;
 public class Friday extends Activity {
 
     String day = "Friday";
+    Switch[] days;
+    Switch[] nights;
 
     ImageButton deleteButton1;
     ImageButton deleteButton2;
@@ -88,7 +90,7 @@ public class Friday extends Activity {
             }
         });
 
-        // Linking buttons
+
         deleteButton1 = (ImageButton) findViewById(R.id.deleteButton1);
         deleteButton2 = (ImageButton) findViewById(R.id.deleteButton2);
         deleteButton3 = (ImageButton) findViewById(R.id.deleteButton3);
@@ -97,7 +99,6 @@ public class Friday extends Activity {
         deleteButtonAll = (ImageButton) findViewById(R.id.deleteButtonAll);
         imageButtonApply = (ImageButton) findViewById(R.id.imageButtonApply);
 
-        // Reset time to default
         deleteButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,7 +138,7 @@ public class Friday extends Activity {
                 endTime5.setText(midnight);
             }
         });
-        // Todo - redundant code - Need to be refactored
+
         deleteButtonAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -211,9 +212,9 @@ public class Friday extends Activity {
                     wpg = HeatingSystem.getWeekProgram();
                     int dayN = 0;
                     int nightN = 0;
-                    Switch[] days = new Switch[5];
-                    ; //WHAT ON EARTH IS THIS
-                    Switch[] nights = new Switch[5];
+                    days = new Switch[5];
+
+                    nights = new Switch[5];
 
                     for (int i = 0; i < 10; i++) {
                         Switch current = (wpg.data.get(day).get(i));
@@ -226,16 +227,20 @@ public class Friday extends Activity {
                         }
                     }
 
-                    endTime1.setText(nights[0].getTime());
-                    endTime2.setText(nights[1].getTime());
-                    endTime3.setText(nights[2].getTime());
-                    endTime4.setText(nights[3].getTime());
-                    endTime5.setText(nights[4].getTime());
-                    startTime1.setText(days[0].getTime());
-                    startTime2.setText(days[1].getTime());
-                    startTime3.setText(days[2].getTime());
-                    startTime4.setText(days[3].getTime());
-                    startTime5.setText(days[4].getTime());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            endTime1.setText(nights[0].getTime());
+                            endTime2.setText(nights[1].getTime());
+                            endTime3.setText(nights[2].getTime());
+                            endTime4.setText(nights[3].getTime());
+                            endTime5.setText(nights[4].getTime());
+                            startTime1.setText(days[0].getTime());
+                            startTime2.setText(days[1].getTime());
+                            startTime3.setText(days[2].getTime());
+                            startTime4.setText(days[3].getTime());
+                            startTime5.setText(days[4].getTime());
+                        }});
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -247,8 +252,14 @@ public class Friday extends Activity {
             @Override
             public void run() {
                 try {
-                    dayTemp.setText(HeatingSystem.get("dayTemperature"));
-                    nightTemp.setText(HeatingSystem.get("nightTemperature"));
+                    dayTemperature = HeatingSystem.get("dayTemperature");
+                    nightTemperature = HeatingSystem.get("nightTemperature");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            dayTemp.setText(dayTemperature);
+                            nightTemp.setText(nightTemperature);
+                        }});
                 } catch (ConnectException e) {
                     e.printStackTrace();
                 }
