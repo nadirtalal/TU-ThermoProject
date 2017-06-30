@@ -53,6 +53,7 @@ public class Friday extends Activity {
     int duration = Toast.LENGTH_SHORT;
     Toast toastTemp;
     Toast toastPlanning;
+    Toast toastInput;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class Friday extends Activity {
 
         toastTemp = Toast.makeText(this, "Day and night temperatures have been updated", duration);
         toastPlanning = Toast.makeText(this, day + "'s program has been updated", duration);
+        toastInput = Toast.makeText(this, "Invalid input detected, all input should adhere to 24 hour notation", duration);
         setDay = (ImageButton) findViewById(R.id.setDay);
         dayTemp = (EditText) findViewById(R.id.dayTemp);
         nightTemp = (EditText) findViewById(R.id.nightTemp);
@@ -156,32 +158,83 @@ public class Friday extends Activity {
         });
 
         //listerner for the apply button, it get the current weekprogram and replaces the day
+        //also check if every input is in valid 24H notation
         imageButtonApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     wpg = HeatingSystem.getWeekProgram();
 
-                    wpg.data.get(day).get(0).setTime(String.valueOf(endTime1.getText()));
-                    wpg.data.get(day).get(0).setType("night");
-                    wpg.data.get(day).get(1).setTime(String.valueOf(endTime2.getText()));
-                    wpg.data.get(day).get(1).setType("night");
-                    wpg.data.get(day).get(2).setTime(String.valueOf(endTime3.getText()));
-                    wpg.data.get(day).get(2).setType("night");
-                    wpg.data.get(day).get(3).setTime(String.valueOf(endTime4.getText()));
-                    wpg.data.get(day).get(3).setType("night");
-                    wpg.data.get(day).get(4).setTime(String.valueOf(endTime5.getText()));
-                    wpg.data.get(day).get(4).setType("night");
-                    wpg.data.get(day).get(5).setTime(String.valueOf(startTime1.getText()));
-                    wpg.data.get(day).get(5).setType("day");
-                    wpg.data.get(day).get(6).setTime(String.valueOf(startTime2.getText()));
-                    wpg.data.get(day).get(6).setType("day");
-                    wpg.data.get(day).get(7).setTime(String.valueOf(startTime3.getText()));
-                    wpg.data.get(day).get(7).setType("day");
-                    wpg.data.get(day).get(8).setTime(String.valueOf(startTime4.getText()));
-                    wpg.data.get(day).get(8).setType("day");
-                    wpg.data.get(day).get(9).setTime(String.valueOf(startTime5.getText()));
-                    wpg.data.get(day).get(9).setType("day");
+                    if(Switch.isValidTimeSyntax(String.valueOf(endTime1.getText())) ){
+                        wpg.data.get(day).get(0).setTime(String.valueOf(endTime1.getText()));
+                        wpg.data.get(day).get(0).setType("night");
+                    }else{
+                        toastInput.show();
+                        return;
+                    }
+                    if(Switch.isValidTimeSyntax(String.valueOf(endTime2.getText())) ){
+                        wpg.data.get(day).get(1).setTime(String.valueOf(endTime2.getText()));
+                        wpg.data.get(day).get(1).setType("night");
+                    }else{
+                        toastInput.show();
+                        return;
+                    }
+                    if(Switch.isValidTimeSyntax(String.valueOf(endTime3.getText())) ){
+                        wpg.data.get(day).get(2).setTime(String.valueOf(endTime3.getText()));
+                        wpg.data.get(day).get(2).setType("night");
+                    }else{
+                        toastInput.show();
+                        return;
+                    }
+                    if(Switch.isValidTimeSyntax(String.valueOf(endTime4.getText())) ){
+                        wpg.data.get(day).get(3).setTime(String.valueOf(endTime4.getText()));
+                        wpg.data.get(day).get(3).setType("night");
+                    }else{
+                        toastInput.show();
+                        return;
+                    }
+                    if(Switch.isValidTimeSyntax(String.valueOf(endTime5.getText())) ){
+                        wpg.data.get(day).get(4).setTime(String.valueOf(endTime5.getText()));
+                        wpg.data.get(day).get(4).setType("night");
+                    }else{
+                        toastInput.show();
+                        return;
+                    }
+                    if(Switch.isValidTimeSyntax(String.valueOf(startTime1.getText())) ){
+                        wpg.data.get(day).get(5).setTime(String.valueOf(startTime1.getText()));
+                        wpg.data.get(day).get(5).setType("day");
+                    }else{
+                        toastInput.show();
+                        return;
+                    }
+                    if(Switch.isValidTimeSyntax(String.valueOf(startTime2.getText())) ){
+                        wpg.data.get(day).get(6).setTime(String.valueOf(startTime2.getText()));
+                        wpg.data.get(day).get(6).setType("day");
+                    }else{
+                        toastInput.show();
+                        return;
+                    }
+                    if(Switch.isValidTimeSyntax(String.valueOf(startTime3.getText())) ){
+                        wpg.data.get(day).get(7).setTime(String.valueOf(startTime3.getText()));
+                        wpg.data.get(day).get(7).setType("day");
+                    }else{
+                        toastInput.show();
+                        return;
+                    }
+                    if(Switch.isValidTimeSyntax(String.valueOf(startTime4.getText())) ){
+                        wpg.data.get(day).get(8).setTime(String.valueOf(startTime4.getText()));
+                        wpg.data.get(day).get(8).setType("day");
+                    }else{
+                        toastInput.show();
+                        return;
+                    }
+                    if(Switch.isValidTimeSyntax(String.valueOf(startTime5.getText())) ){
+                        wpg.data.get(day).get(9).setTime(String.valueOf(startTime5.getText()));
+                        wpg.data.get(day).get(9).setType("day");
+                    }else{
+                        toastInput.show();
+                        return;
+                    }
 
                     HeatingSystem.setWeekProgram(wpg);
 
@@ -189,7 +242,6 @@ public class Friday extends Activity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
         });
 
